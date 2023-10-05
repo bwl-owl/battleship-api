@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "853e66ad-4134-46f4-a5e0-16b1bd3dd908",
+		"name": "BattleshipApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30274517"
+	},
+	"item": [
+		{
+			"name": "Add battleship",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"rowStart\": 0,\r\n  \"rowEnd\": 0,\r\n  \"colStart\": 0,\r\n  \"colEnd\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/Game/boards/0/ships",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"Game",
+						"boards",
+						"0",
+						"ships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attack",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"row\": 0,\r\n  \"col\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/Game/boards/0/attack",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"Game",
+						"boards",
+						"0",
+						"attack"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/Game/boards",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"Game",
+						"boards"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
