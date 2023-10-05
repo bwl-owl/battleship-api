@@ -167,7 +167,7 @@ namespace BattleshipApiUnitTests.Controllers
         [InlineData(5, 1, AttackResult.HIT)]
         [InlineData(5, 9, AttackResult.HIT)]
         [InlineData(5, 5, AttackResult.HIT)]
-        public void Attack_Should_Return_Result(int row, int col, AttackResult expectedResult)
+        public void Attack_Should_Return_Result_And_Modify_Board_If_Hit(int row, int col, AttackResult expectedResult)
         {
             _sut.CreateGameBoard();
             _sut.AddBattleShip(0, new Battleship()
@@ -188,6 +188,7 @@ namespace BattleshipApiUnitTests.Controllers
 
             Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
             Assert.Equal(expectedResult, apiResponse.Result);
+            Assert.Equal(GameController.GameBoards[0].Board[row, col], expectedResult == AttackResult.HIT ? TileState.SUNK : TileState.EMPTY);
         }
     }
 }
