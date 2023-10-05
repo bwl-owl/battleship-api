@@ -18,7 +18,7 @@ public class GameBoard
 
     public TileState[,] AddBattleShip(Battleship ship) {
         if (ship.RowStart < 0 || ship.ColStart < 0 || ship.RowEnd >= Board.GetLength(0) || ship.ColEnd >= Board.GetLength(1)) {
-            throw new ArgumentException($"Error adding battleship: row {ship.RowEnd} and {ship.ColEnd} out of bounds for board {BoardId}");
+            throw new ArgumentException($"Error adding battleship: row {ship.RowEnd} and col {ship.ColEnd} out of bounds for board {BoardId}");
         }
         for (var i = ship.RowStart; i <= ship.RowEnd; i++) {
             for (var j = ship.ColStart; j <= ship.ColEnd; j++) {
@@ -33,10 +33,10 @@ public class GameBoard
 
     public AttackResult Attack(Attack attack) {
         if (attack.Row >= Board.GetLength(0) || attack.Col >= Board.GetLength(1)) {
-            throw new ArgumentException($"Error attempting attack: row {attack.Row} and {attack.Col} out of bounds for board {BoardId}");
+            throw new ArgumentException($"Error attempting attack: row {attack.Row} and col{attack.Col} out of bounds for board {BoardId}");
         }
         if (Board[attack.Row, attack.Col] == TileState.SUNK) { 
-            throw new ArgumentException($"Error attempting attack: row {attack.Row} and {attack.Col} on {BoardId} already contains a sunk battleship");
+            throw new ArgumentException($"Error attempting attack: row {attack.Row} and col {attack.Col} on {BoardId} already contains a sunk battleship");
         }
         if (Board[attack.Row, attack.Col] == TileState.UNSUNK) { 
             Board[attack.Row, attack.Col] = TileState.SUNK;
